@@ -32,11 +32,11 @@ class Question(models.Model):
         )
 
     TYPE = (
-        (0, _("Multiple Choice"))
+        (0, _('Multiple Choice')),
     )
 
-    quiz = models.ForeignKey(Question, related_name="question", on_delete=models.DO_NOTHING)
-    technique = models.IntegerField(choices=Type, default=0,verbose_name=_("Type Of Question"))
+    quiz = models.ForeignKey(Quizzes, related_name="question", on_delete=models.DO_NOTHING)
+    technique = models.IntegerField(choices=TYPE, default=0,verbose_name=_("Type Of Question"))
     title = models.CharField(max_length=255, verbose_name=_("Title"))
     difficulty = models.IntegerField(choices=SCALE, default=0, verbose_name=_("Difficulty"))
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
